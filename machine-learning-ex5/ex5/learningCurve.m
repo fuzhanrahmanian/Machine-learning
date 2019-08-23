@@ -52,9 +52,18 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
+lambda_train = 0
+lambda_validation = 0
 
-
-
+for i = 1:m
+  X_subtrain = X(1:i, :);
+  y_subtrain = y(1:i);
+  theta = trainLinearReg(X_subtrain, y_subtrain, lambda);
+  
+  error_train(i) = linearRegCostFunction(X_subtrain, y_subtrain, theta, lambda_train);
+  error_val(i) = linearRegCostFunction(Xval, yval, theta, lambda_validation);
+  
+  endfor
 
 
 
